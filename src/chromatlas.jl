@@ -1,5 +1,9 @@
 
+"""
+    gethostdir()
 
+    Chrom atlas data directory on slade and penrose.
+"""
 function gethostdir()
 
     host = gethostname()
@@ -14,7 +18,7 @@ end
 
 
 """
-    loadchromatlasmeta(; folder="/slade/projects/Research_Project-MRC158833/tfs_chromatin/chromatlas")
+    loadchromatlasmeta(; folder=gethostdir())
 
     Load data frame of bed files and bigwig files of chrom atlas
 """
