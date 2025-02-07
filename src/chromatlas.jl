@@ -22,7 +22,7 @@ end
 
     Load data frame of bed files and bigwig files of chrom atlas
 """
-function loadchromatlasmeta(; folder==gethostdir())
+function loadchromatlasmeta(; folder=gethostdir())
     bedfiles = glob("*.bed", joinpath(folder, "peaks"))
     samples = replace.(basename.(bedfiles), ".bed" => "")
     totalpeaks = @showprogress map(countlines, bedfiles);
