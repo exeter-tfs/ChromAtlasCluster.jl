@@ -1,11 +1,24 @@
 
 
+function gethostdir()
+
+    host = gethostname()
+    if host == "slade"
+        return "/slade/projects/Research_Project-MRC158833/tfs_chromatin/chromatlas"
+    elseif host == "penrose"
+        return "/penrose/projects/data/chromatlas"
+    else
+        error("$host not recognosied")
+    end
+end
+
+
 """
     loadchromatlasmeta(; folder="/slade/projects/Research_Project-MRC158833/tfs_chromatin/chromatlas")
 
     Load data frame of bed files and bigwig files of chrom atlas
 """
-function loadchromatlasmeta(; folder="/slade/projects/Research_Project-MRC158833/tfs_chromatin/chromatlas")
+function loadchromatlasmeta(; folder==gethostdir())
     bedfiles = glob("*.bed", joinpath(folder, "peaks"))
     samples = replace.(basename.(bedfiles), ".bed" => "")
     totalpeaks = @showprogress map(countlines, bedfiles);
